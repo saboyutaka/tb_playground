@@ -7,6 +7,24 @@ p
   strong Body:
   = @post.body
 
+
+section#comments
+  h3 Comments
+  - @post.comments.each do |comment|
+    article(id="comments:<#{comment.id}")
+      p = "#{comment.name}: #{comment.body}"
+
+h3 New Comment
+= form_for @post.comments.new, remote: true, id: 'new_comment' do |f|
+  = f.hidden_field :post_id
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :body
+    = f.text_area :body
+  .actions = f.submit
+
 = link_to 'Edit', edit_post_path(@post)
 '|
 = link_to 'Back', posts_path
