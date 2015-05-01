@@ -1,0 +1,7 @@
+section#comments
+  h3 Comments
+  - comments.each do |comment|
+    article(id="comments:<#{comment.id}")
+      p
+        = "#{comment.name}: #{comment.body} "
+        = link_to 'Destroy', comment_path(comment, post_id: comment.post_id), method: :delete, remote: true

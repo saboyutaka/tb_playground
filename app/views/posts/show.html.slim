@@ -7,15 +7,18 @@ p
   strong Body:
   = @post.body
 
-
-section#comments
-  h3 Comments
-  - @post.comments.each do |comment|
-    article(id="comments:<#{comment.id}")
-      p = "#{comment.name}: #{comment.body}"
+= render partial: 'posts/comments', locals: { comments: @post.comments }
 
 h3 New Comment
+
 = form_for @post.comments.new, remote: true, id: 'new_comment' do |f|
+  #error
+    - if f.object.errors.any?
+      #error_explanation
+        ul
+          - f.object.errors.full_messages.each do |message|
+            li = message
+
   = f.hidden_field :post_id
   .field
     = f.label :name

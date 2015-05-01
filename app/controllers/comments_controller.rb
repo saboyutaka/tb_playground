@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: [:create, :destroy]
+  before_action :set_post, only: [:create]
 
   def create
     @comment = @post.comments.new(comment_params)
@@ -12,6 +12,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    post = Post.find_by(id: params[:post_id])
+    post.comments.find_by(id: params[:id]).try(:destroy)
+    render 'posts/_comments', locals: { comments: post.reload.comments }, change: 'comments'
   end
 
   private
