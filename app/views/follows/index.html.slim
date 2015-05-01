@@ -1,0 +1,9 @@
+h1 Follow
+
+= Time.now
+
+#following
+  - if @follow.present?
+    = link_to 'Unfollow', follow_path, method: :delete, remote: true
+  - else
+    = link_to 'Follow', follow_path, method: :post, remote: true
