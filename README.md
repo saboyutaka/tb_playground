@@ -1,24 +1,13 @@
-## README
+# Turbolinks Playground
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Turbolinks3.0で追加されるPartial replacementsを試してみる
 
-Things you may want to cover:
+```
+git clone https://github.com/saboyutaka/tb_playground.git
 
-* Ruby version
+gem install bundler
 
-* System dependencies
+bundle install --path=vendor/bundle
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+bundle exec rails s
+```
